@@ -1,7 +1,7 @@
 # Pull base image python version 3.10.4 is inherited. -slim meaning python version size will exclude some of the modules that
 # doesnot contain common packages. -bulleys refers to the latest stable Debian release.
 # Pull base image
-FROM python:3.10.4-slim-bullseye
+FROM python:3.11.4-slim-bullseye
 
 # Set environment variables
 ENV PIP_DISABLE_PIP_VERSION_CHECK 1
