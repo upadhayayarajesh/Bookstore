@@ -11,6 +11,11 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
+from environs import Env
+
+# read environmental variable.
+env = Env()
+env.read_env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -23,6 +28,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-p(5@as1cqq_qhy$0#jjgp2^*qgzgzmc(jy*xr83@ly&q*$0)34"
 
 # SECURITY WARNING: don't run with debug turned on in production!
+# DEBUG = env.bool("DJANGO_DEBUG") providing it through environmental variable.
 DEBUG = True
 
 ALLOWED_HOSTS = []
@@ -91,6 +97,10 @@ WSGI_APPLICATION = "django_project.wsgi.application"
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 DATABASES = {
+    # setting database variable through environmental variable.
+    # "default": env.dj_db_url(
+    #     "DATABASE_URL", default="postgres://postgres@localhost/postgres"
+    # )
     "default": {
         "ENGINE": "django.db.backends.postgresql",
         "NAME": "postgres",
