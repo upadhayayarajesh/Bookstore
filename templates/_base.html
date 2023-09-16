@@ -32,23 +32,28 @@
                <li class="nav-item">
                    <a class="nav-link" href="{% url 'about' %}">About</a>
                </li>
-           {% if user.is_authenticated %}
-               <li class="nav-item">
+               {% if user.is_authenticated %}
+                   <li class="nav-item">
                <a class="nav-link" href="{% url 'account_logout' %}">Log Out</a>
            </li>
-           {% else %}
-               <li class="nav-item">
+               {% else %}
+                   <li class="nav-item">
                <a class="nav-link" href="{% url 'account_login' %}">Log In</a>
            </li>
-               <li class="nav-item">
+                   <li class="nav-item">
                <a class="nav-link" href="{% url 'account_signup' %}">Sign Up</a>
            </li>
-           </li>
-               <li class="nav-item">
+                   </li>
+                   <li class="nav-item">
                <a class="nav-link" href="{% provider_login_url 'github' %}">Login With GitHub</a>
            </li>
-           {% endif %}
+               {% endif %}
            </ul>
+           <form class="d-flex" action="{% url 'search_results' %}" method="get">
+               <input class="form-control me-2" type="search" name="q" placeholder="Search"
+                      aria-label="Search">
+                   <button class="btn btn-outline-success" type="submit">Search</button>
+           </form>
        </div>
        </div>
    </nav>
