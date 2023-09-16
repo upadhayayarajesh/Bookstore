@@ -1,8 +1,18 @@
 from django.contrib.auth import get_user_model
-from django.test import TestCase
+from django.test import TestCase, override_settings
 from django.urls import reverse, resolve
 
 
+@override_settings(
+    SOCIALACCOUNT_PROVIDERS={
+        "github": {
+            "APP": {
+                "client_id": "943fc152506a4b4fbce0",
+                "secret": "043aaf95c123de948eced1cd6543efc87c2c1de5",
+            }
+        }
+    }
+)
 class CustomUserTests(TestCase):
     def test_create_user(self):
         User = get_user_model()
@@ -27,6 +37,16 @@ class CustomUserTests(TestCase):
         self.assertTrue(admin_user.is_staff)
 
 
+@override_settings(
+    SOCIALACCOUNT_PROVIDERS={
+        "github": {
+            "APP": {
+                "client_id": "943fc152506a4b4fbce0",
+                "secret": "043aaf95c123de948eced1cd6543efc87c2c1de5",
+            }
+        }
+    }
+)
 class SignUpPageTests(TestCase):
     username = "newuser"
     email = "newuser@email.com"

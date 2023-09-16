@@ -1,10 +1,21 @@
-from django.test import SimpleTestCase
+from allauth.socialaccount.models import SocialApp
+from django.test import TestCase, override_settings
 from django.urls import reverse, resolve
 
 from pages.views import HomePageView, AboutPageView
 
 
-class HomePageTest(SimpleTestCase):
+@override_settings(
+    SOCIALACCOUNT_PROVIDERS={
+        "github": {
+            "APP": {
+                "client_id": "943fc152506a4b4fbce0",
+                "secret": "043aaf95c123de948eced1cd6543efc87c2c1de5",
+            }
+        }
+    }
+)
+class HomePageTest(TestCase):
     def setUp(self):
         url = reverse("home")
         self.response = self.client.get(url)
@@ -29,7 +40,17 @@ class HomePageTest(SimpleTestCase):
         self.assertEquals(view.func.__name__, HomePageView.as_view().__name__)
 
 
-class AboutPagesTests(SimpleTestCase):
+@override_settings(
+    SOCIALACCOUNT_PROVIDERS={
+        "github": {
+            "APP": {
+                "client_id": "943fc152506a4b4fbce0",
+                "secret": "043aaf95c123de948eced1cd6543efc87c2c1de5",
+            }
+        }
+    }
+)
+class AboutPagesTests(TestCase):
     def setUp(self):
         url = reverse("about")
         self.response = self.client.get(url)
