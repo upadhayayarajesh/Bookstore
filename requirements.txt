@@ -13,13 +13,14 @@ Django==4.2.5
 django-allauth==0.56.1
 django-cache-url==3.4.4
 django-crispy-forms==2.0
-environs[django]==9.5.0
+environs==9.5.0
 idna==3.4
 marshmallow==3.20.1
 mypy-extensions==1.0.0
 oauthlib==3.2.2
 packaging==23.1
 pathspec==0.11.2
+Pillow==10.0.1
 platformdirs==3.10.0
 psycopg2-binary==2.9.7
 pycparser==2.21
